@@ -203,6 +203,9 @@ open class URLSessionTransport: NSObject, PhoenixTransport, URLSessionWebSocketD
     // Create the session and websocket task
     if self.session == nil {
       self.session = URLSession(configuration: self.configuration, delegate: self, delegateQueue: nil)
+        print("SwiftPhoenixClient: --- New Session")
+    } else {
+        print("SwiftPhoenixClient: --- Old Session")
     }
     var request = URLRequest(url: url)
       
