@@ -201,7 +201,9 @@ open class URLSessionTransport: NSObject, PhoenixTransport, URLSessionWebSocketD
     self.readyState = .connecting
     
     // Create the session and websocket task
-    self.session = URLSession(configuration: self.configuration, delegate: self, delegateQueue: nil)
+    if self.session == nil {
+      self.session = URLSession(configuration: self.configuration, delegate: self, delegateQueue: nil)
+    }
     var request = URLRequest(url: url)
       
     headers.forEach { (key: String, value: Any) in
